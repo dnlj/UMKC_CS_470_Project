@@ -1,0 +1,13 @@
+{
+	"name": "app",
+	"version": "0.0.1",
+	"main": "js/main.js",
+	"scripts": {
+		"start": "electron ."
+	},
+	"dependencies": {
+		"electron": "^2.0.9",
+		"jshint": "^2.9.6",
+		"mssql": "^4.2.1"
+	}
+}
