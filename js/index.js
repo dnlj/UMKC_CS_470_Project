@@ -15,8 +15,10 @@ let pool = new sql.ConnectionPool({
 });
 
 let main = function() {
-	pool.query("SELECT * FROM TestTable").then(res => {
-		console.log(res);
+	$("#test_button").on("click", () => {
+		pool.query("SELECT * FROM TestTable").then(res => {
+			console.log(res);
+		});
 	});
 };
 
