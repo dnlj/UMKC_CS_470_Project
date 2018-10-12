@@ -1,3 +1,10 @@
+:root {
+	/* Colors pulled from: http://chriskempson.com/projects/base16/ */
+	--color-base00: #181818;
+	--color-base01: #282828;
+	--color-base05: #d8d8d8;
+}
+
 html {
 	box-sizing: border-box;
 }
@@ -7,6 +14,8 @@ body {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
+	background: var(--color-base00);
+	color: var(--color-base05);
 }
 
 *, *:before, *:after {
@@ -14,12 +23,11 @@ body {
 }
 
 nav {
-	background: #f00;
+	background: var(--color-base01);
 	width: 20%;
 }
 
 main {
-	background: #0f0;
 	flex: 1 0 auto;
 }
 
