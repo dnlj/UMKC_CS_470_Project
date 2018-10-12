@@ -20,6 +20,10 @@ let main = function() {
 		op.async = true;
 	});
 	
+	$("#page_select").change(function() {
+		$("main").load("../html/" + $(this).val() +".html");
+	});
+	
 	$("main").load("../html/test_file.html");
 };
 
