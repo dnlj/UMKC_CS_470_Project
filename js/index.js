@@ -1,25 +1,26 @@
 const sql = require("mssql"); // https://www.npmjs.com/package/mssql
+const fs = require("fs");
 const $ = require("jquery");
 
-console.log("This is a test");
+console.log("index.js");
 
 let error = function(err) {
 	console.log("ERROR: " + err);
 };
 
 let pool = new sql.ConnectionPool({
-    user: "umkc_test",
-    password: "abc123",
-    server: "127.0.0.1",
-    database: "GroupProjectDB",
+	user: "umkc_test",
+	password: "abc123",
+	server: "127.0.0.1",
+	database: "GroupProjectDB",
 });
 
 let main = function() {
-	$("#test_button").on("click", () => {
-		pool.query("SELECT * FROM TestTable").then(res => {
-			console.log(res);
-		});
+	$.ajaxPrefilter(function(op) {
+		op.async = true;
 	});
+	
+	$("main").load("../html/test_file.html");
 };
 
 pool.connect().then(() => {
