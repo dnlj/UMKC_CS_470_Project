@@ -20,15 +20,19 @@ let main = function() {
 		op.async = true;
 	});
 	
-	$("#page_select").change(function() {
+	/*$("#page_select").change(function() {
 		$("main").load("../html/" + $(this).val() +".html");
-	});
+	});*/
 	
-	$("main").load("../html/test_file.html");
+	$("main").load("../html/example.html");
 };
 
+// TEMP
+main();
+
+/*
 pool.connect().then(() => {
 	main();
 }).catch(err => {
 	error(err);
-});
+});*/

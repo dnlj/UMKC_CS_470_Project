@@ -2,7 +2,23 @@
 	/* Colors pulled from: http://chriskempson.com/projects/base16/ */
 	--color-base00: #181818;
 	--color-base01: #282828;
+	--color-base02: #383838;
+	--color-base03: #585858;
+	--color-base04: #b8b8b8;
 	--color-base05: #d8d8d8;
+	--color-base06: #e8e8e8;
+	--color-base07: #f8f8f8;
+	--color-base08: #ab4642;
+	--color-base09: #dc9656;
+	--color-base0A: #f7ca88;
+	--color-base0B: #a1b56c;
+	--color-base0C: #86c1b9;
+	--color-base0D: #7cafc2;
+	--color-base0E: #ba8baf;
+	--color-base0F: #a16946;
+	
+	--spacing: 0.25em;
+	--spacing-large: 1em;
 }
 
 html {
@@ -16,6 +32,7 @@ body {
 	display: flex;
 	background: var(--color-base00);
 	color: var(--color-base05);
+	font-family: Segoe UI, Arial, sans-serif;
 }
 
 *, *:before, *:after {
@@ -24,14 +41,80 @@ body {
 
 nav {
 	background: var(--color-base01);
-	width: 20%;
+	flex: 0 0 auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.nav_button {
+	background: var(--color-base02);
+	width: 100%;
+	border: none;
+	margin: 0 0 0.25em 0;
+	padding: var(--spacing-large);
+	color: inherit;
+}
+
+.nav_button.selected {
+	background: var(--color-base00);
+}
+
+.nav_button:hover {
+	color: var(--color-base06);
+	background: var(--color-base03);
 }
 
 main {
-	flex: 1 0 auto;
+	flex: 1 1 auto;
+	padding: var(--spacing-large);
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 #test_button {
 	width: 20%;
 	height: 20%;
+}
+
+#products {
+	width: 100%;
+	border-collapse: collapse;
+	border: none;
+}
+
+#products td + td {
+	border-left: var(--spacing) solid var(--color-base00);
+}
+
+#products thead {
+	border-bottom: var(--spacing-large) solid var(--color-base00);
+}
+
+#products tbody tr:nth-child(odd) {
+	background: var(--color-base02);
+}
+
+#products thead th {
+	background: var(--color-base02);
+}
+
+#products tr {
+	height: 3.5em;
+}
+
+#products td input {
+	width: 100%;
+}
+
+input[type="text"] {
+	color: var(--color-base00);
+	background: var(--color-base05);
+	border: none;
+	box-shadow: 0 0 var(--spacing) #000 inset;
+	border-radius: var(--spacing);
+}
+
+input:focus {
+	outline: var(--color-base09) solid 1px;
+	outline-offset: -1px;
 }

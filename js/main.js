@@ -29,6 +29,8 @@ app.on("ready", () => {
 		// when you should delete the corresponding element.
 		win = null;
 	});
+	
+	win.setMenuBarVisibility(false);
 });
 
 // Quit when all windows are closed.
