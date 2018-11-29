@@ -25,11 +25,11 @@ const pages = [
 	},
 ];
 
-let error = function(err) {
+const error = function(err) {
 	console.log("ERROR: " + err);
 };
 
-let pool = new sql.ConnectionPool({
+const pool = new sql.ConnectionPool({
 	user: "umkc_test",
 	password: "abc123",
 	server: "127.0.0.1",
@@ -50,7 +50,7 @@ const loadPage = function(page) {
 	page.button.addClass("selected");
 };
 
-let main = function() {
+const main = function() {
 	$.ajaxPrefilter(function(op) {
 		op.async = true;
 	});
