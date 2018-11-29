@@ -64,11 +64,6 @@ const addColumn = function(label) {
 }
 
 const main = function() {
-	// TODO: Since we are no longer loading html can we get rid of this?
-	$.ajaxPrefilter(function(op) {
-		op.async = true;
-	});
-	
 	for (let i = 0; i < pages.length; ++i) {
 		const p = pages[i];
 		p.button = $(`<input class="nav_button" type="button" value="${p.label}">`)

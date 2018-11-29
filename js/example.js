@@ -7,6 +7,7 @@
 	addColumn("Name");
 	addColumn("MSRP");
 	addColumn("Description");
+	
 	const addRow = function(d) {
 		let row = $("<tr></tr>");
 		
