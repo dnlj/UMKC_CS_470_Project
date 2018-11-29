@@ -1,5 +1,4 @@
 const sql = require("mssql"); // https://www.npmjs.com/package/mssql
-const fs = require("fs");
 const $ = require("jquery");
 
 const pages = [
