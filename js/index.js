@@ -36,8 +36,6 @@ const pool = new sql.ConnectionPool({
 });
 
 const clearPage = function() {
-	//  TODO: insert/update edit bar
-	
 	$("#edit").empty();
 	$("#labels").empty();
 	$("#primary > tbody").empty();
@@ -80,13 +78,16 @@ const addRow = function(data) {
 }
 
 const main = function() {
+	// TODO: insert row (sql)
+	// TODO: edit row (sql)
+	// TODO: delete row (sql)
+	
 	for (let i = 0; i < pages.length; ++i) {
 		const p = pages[i];
 		p.button = $(`<input class="nav_button" type="button" value="${p.label}">`)
 			.appendTo("html > body > nav");
 			
 		p.button.on("click", function() {
-			console.log(p);
 			loadPage(p);
 		});
 	}
@@ -94,8 +95,7 @@ const main = function() {
 
 main();
 
-/*
-pool.connect().then(() => {
+/*pool.connect().then(() => {
 	main();
 }).catch(err => {
 	error(err);
