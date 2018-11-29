@@ -63,6 +63,23 @@ const addColumn = function(label) {
 	$("#labels").append(`<th>${label}</th>`);
 }
 
+const addRow = function(data) {
+	let row = $("<tr></tr>");
+	
+	for (let i = 0; i < data.length; ++i) {
+		row.append(`<td>${data[i]}</td>`);
+	}
+	
+	row.append(
+		`<td>
+			<input type="button" value="Edit">
+			<input type="button" value="Delete">
+		</td>`
+	);
+	
+	$("#primary > tbody").append(row);
+}
+
 const main = function() {
 	for (let i = 0; i < pages.length; ++i) {
 		const p = pages[i];

@@ -8,22 +8,14 @@
 	addColumn("MSRP");
 	addColumn("Description");
 	
-	const addRow = function(d) {
-		let row = $("<tr></tr>");
-		
-		row.append(`<td>${d.id}</td>`);
-		row.append(`<td>${d.name}</td>`);
-		row.append(`<td>${d.msrp}</td>`);
-		row.append(`<td>${d.desc}</td>`);
-		row.append(`<td>
-			<input type="button" value="Edit">
-			<input type="button" value="Delete">
-		</td>`);
-		
-		$("#primary > tbody").append(row);
-	}
-
 	for (let i = 0; i < data.length; ++i) {
-		addRow(data[i]);
+		let rd = data[i];
+		
+		addRow([
+			rd.id,
+			rd.name,
+			rd.msrp,
+			rd.desc,
+		]);
 	}
 }
