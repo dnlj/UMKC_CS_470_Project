@@ -76,33 +76,33 @@ main {
 	height: 20%;
 }
 
-#products {
+#primary {
 	width: 100%;
 	border-collapse: collapse;
 	border: none;
 }
 
-#products td + td {
+#primary td + td {
 	border-left: var(--spacing) solid var(--color-base00);
 }
 
-#products thead {
+#primary thead {
 	border-bottom: var(--spacing-large) solid var(--color-base00);
 }
 
-#products tbody tr:nth-child(odd) {
+#primary tbody tr:nth-child(odd) {
 	background: var(--color-base02);
 }
 
-#products thead th {
+#primary thead th {
 	background: var(--color-base02);
 }
 
-#products tr {
+#primary tr {
 	height: 3.5em;
 }
 
-#products td input {
+#primary td input {
 	width: 100%;
 }
 

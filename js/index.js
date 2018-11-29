@@ -5,23 +5,23 @@ const $ = require("jquery");
 const pages = [
 	{
 		label: "Vendors",
-		url: "../html/example.html",
+		file: "../js/example.js",
 	},
 	{
 		label: "Warehouse",
-		url: "../html/example.html",
+		file: "../js/example.js",
 	},
 	{
 		label: "Products",
-		url: "../html/example.html",
+		file: "../js/example.js",
 	},
 	{
 		label: "Employees",
-		url: "../html/example.html",
+		file: "../js/example.js",
 	},
 	{
 		label: "Stores",
-		url: "../html/example.html",
+		file: "../js/example.js",
 	},
 ];
 
@@ -37,7 +37,11 @@ const pool = new sql.ConnectionPool({
 });
 
 const clearPage = function() {
-	$("main").empty();
+	//  TODO: insert/update edit bar
+	
+	$("#edit").empty();
+	$("#labels").empty();
+	$("#primary > tbody").empty();
 	
 	for (let i = 0; i < pages.length; ++i) {
 		pages[i].button.removeClass("selected");
@@ -46,11 +50,21 @@ const clearPage = function() {
 
 const loadPage = function(page) {
 	clearPage();
-	$("main").load(page.url);
-	page.button.addClass("selected");
+	
+	$.getScript(page.file, function() {
+		page.button.addClass("selected");
+		$("#edit").append(`<td><input type="button" value="Add"></td>`);
+		$("#labels").append(`<th>Action</th>`);
+	});
 };
 
+const addColumn = function(label) {
+	$("#edit").append(`<td><input type="text"></td>`);
+	$("#labels").append(`<th>${label}</th>`);
+}
+
 const main = function() {
+	// TODO: Since we are no longer loading html can we get rid of this?
 	$.ajaxPrefilter(function(op) {
 		op.async = true;
 	});
