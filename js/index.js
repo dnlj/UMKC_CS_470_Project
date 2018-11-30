@@ -1,6 +1,8 @@
 const sql = require("mssql"); // https://www.npmjs.com/package/mssql
 const $ = require("jquery");
 
+let _deleteFunction = null;
+
 const pages = [
 	{
 		label: "Vendors",
@@ -40,10 +42,12 @@ const clearPage = function() {
 	$("#labels").empty();
 	$("#primary > tbody").empty();
 	
+	_deleteFunction = null;
+	
 	for (let i = 0; i < pages.length; ++i) {
 		pages[i].button.removeClass("selected");
 	}
-}
+};
 
 const loadPage = function(page) {
 	clearPage();
@@ -58,7 +62,7 @@ const loadPage = function(page) {
 const addColumn = function(label) {
 	$("#edit").append(`<td><input type="text"></td>`);
 	$("#labels").append(`<th>${label}</th>`);
-}
+};
 
 const addRow = function(data) {
 	let row = $("<tr></tr>");
@@ -67,20 +71,26 @@ const addRow = function(data) {
 		row.append(`<td>${data[i]}</td>`);
 	}
 	
-	row.append(
-		`<td>
-			<input type="button" value="Edit">
-			<input type="button" value="Delete">
-		</td>`
-	);
+	let td = $(`<td></td>`).appendTo(row);
+	let edit = $(`<input type="button" value="Edit">`).appendTo(td);
+	let del = $(`<input type="button" value="Delete">`).appendTo(td);
+	
+	del.on("click", function() {
+		if (_deleteFunction) {
+			_deleteFunction(data);
+		}
+	});
 	
 	$("#primary > tbody").append(row);
-}
+};
+
+const setDeleteFunction = function(func) {
+	_deleteFunction = func;
+};
 
 const main = function() {
 	// TODO: insert row (sql)
 	// TODO: edit row (sql)
-	// TODO: delete row (sql)
 	
 	for (let i = 0; i < pages.length; ++i) {
 		const p = pages[i];

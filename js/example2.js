@@ -3,6 +3,12 @@ addColumn("Value 1");
 addColumn("Value 2");
 addColumn("Value 3");
 
+setDeleteFunction(row => {
+	pool.request()
+		.input("id", row[0])
+		.query(`DELETE FROM example_table_2 WHERE id=@id`);
+});
+
 pool.query("SELECT * FROM example_table_2").then(res => {
 	return res.recordset;
 }).then(data => {
