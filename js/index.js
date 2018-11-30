@@ -2,6 +2,7 @@ const sql = require("mssql"); // https://www.npmjs.com/package/mssql
 const $ = require("jquery");
 
 let _deleteFunction = null;
+let _addFunction = null;
 
 const pages = [
 	{
@@ -54,8 +55,20 @@ const loadPage = function(page) {
 	
 	$.getScript(page.file, function() {
 		page.button.addClass("selected");
-		$("#edit").append(`<td><input type="button" value="Add"></td>`);
 		$("#labels").append(`<th>Action</th>`);
+		let add = $(`<td><input type="button" value="Add"></td>`).appendTo(`#edit`);
+		
+		add.on("click", function() {
+			if (_addFunction) {
+				let row = [];
+				
+				$(`#edit > td`).children(`input[type="text"]`).each((idx, el) => {
+					row.push(el.value);
+				});
+				
+				_addFunction(row);
+			}
+		});
 	});
 };
 
@@ -88,8 +101,12 @@ const setDeleteFunction = function(func) {
 	_deleteFunction = func;
 };
 
+const setAddFunction = function(func) {
+	_addFunction = func;
+};
+
 const main = function() {
-	// TODO: insert row (sql)
+	// TODO: Error reporting
 	// TODO: edit row (sql)
 	
 	for (let i = 0; i < pages.length; ++i) {
