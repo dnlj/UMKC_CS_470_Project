@@ -20,7 +20,7 @@ const pages = [
 	},
 	{
 		label: "Stores",
-		file: "../js/example.js",
+		file: "../js/example2.js",
 	},
 ];
 
@@ -93,10 +93,8 @@ const main = function() {
 	}
 };
 
-main();
-
-/*pool.connect().then(() => {
+pool.connect().then(() => {
 	main();
 }).catch(err => {
 	error(err);
-});*/
+});
