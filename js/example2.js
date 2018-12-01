@@ -1,23 +1,13 @@
 setDeleteFunction(generalDeleteFunction);
 setAddFunction(generalAddFunction);
 setEditFunction(generalEditFunction);
+setTabelInfo("example_table_2", "id");
 
-pool.query("SELECT * FROM example_table_2").then(res => {
+pool.query(`SELECT * FROM ${_table}`).then(res => {
 	return res.recordset;
 }).then(data => {
-	let map = {};
-	map.trans = [];
-	map.label = {};
-	
 	// Load columns
-	// TODO: Move into getMappingFromSQL function or similar
-	for (let col in data.columns) {
-		let idx = data.columns[col].index;
-		
-		map.trans[idx] = col;
-		map.trans[col] = idx;
-		map.label[col] = col;
-	}
+	const map = buildMappingFromColumns(data.columns);
 	
 	// Update any custom labels we want
 	map.label["id"] = "Id";
@@ -27,8 +17,6 @@ pool.query("SELECT * FROM example_table_2").then(res => {
 	
 	// TODO: Auto-setup columns when setting the mapping?
 	setMapping(map);
-	
-	setTabelInfo("example_table_2", "id");
 	
 	// Add columns
 	for (let i = 0; i < map.trans.length; ++i) {

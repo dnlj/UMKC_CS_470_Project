@@ -202,6 +202,22 @@ const generalEditFunction = function(old, row) {
 		});
 };
 
+const buildMappingFromColumns = function(columns) {
+	let map = {};
+	map.trans = [];
+	map.label = {};
+	
+	for (let col in columns) {
+		let idx = columns[col].index;
+		
+		map.trans[idx] = col;
+		map.trans[col] = idx;
+		map.label[col] = col;
+	}
+	
+	return map;
+};
+
 const main = function() {
 	// TODO: Error reporting
 	
