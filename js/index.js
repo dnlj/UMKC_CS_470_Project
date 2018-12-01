@@ -3,6 +3,7 @@ const $ = require("jquery");
 
 let _deleteFunction = null;
 let _addFunction = null;
+let _currentPage = null;
 
 const pages = [
 	{
@@ -52,6 +53,8 @@ const clearPage = function() {
 
 const loadPage = function(page) {
 	clearPage();
+	
+	_currentPage = page;
 	
 	$.getScript(page.file, function() {
 		page.button.addClass("selected");
@@ -104,6 +107,10 @@ const setDeleteFunction = function(func) {
 const setAddFunction = function(func) {
 	_addFunction = func;
 };
+
+const refresh = function() {
+	loadPage(_currentPage);
+}
 
 const main = function() {
 	// TODO: Error reporting

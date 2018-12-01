@@ -6,11 +6,13 @@ addColumn("Value 3");
 setDeleteFunction(row => {
 	pool.request()
 		.input("id", row[0])
-		.query(`DELETE FROM example_table_2 WHERE id=@id`);
+		.query(`DELETE FROM example_table_2 WHERE id=@id`)
+		.then(() => {
+			refresh();
+		});
 });
 
 setAddFunction((row) => {
-	console.log(row);
 	// TODO: it would be better if we could associate columns with values instead of doing this manually.
 	pool.request()
 		.input("id", row[0])
@@ -20,7 +22,10 @@ setAddFunction((row) => {
 		.query(`
 			INSERT INTO example_table_2 (id, value1, value2, value3)
 				VALUES (@id, @value1, @value2, @value3)
-		`);
+		`)
+		.then(() => {
+			refresh();
+		});
 });
 
 pool.query("SELECT * FROM example_table_2").then(res => {
