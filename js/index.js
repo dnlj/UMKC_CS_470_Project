@@ -20,7 +20,7 @@ const pages = [
 	},
 	{
 		label: "Products",
-		file: "../js/example.js",
+		file: "../js/ex_products.js",
 	},
 	{
 		label: "Employees",
