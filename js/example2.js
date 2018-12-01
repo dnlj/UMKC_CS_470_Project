@@ -15,14 +15,8 @@ pool.query(`SELECT * FROM ${_table}`).then(res => {
 	map.label["value2"] = "Value 2";
 	map.label["value3"] = "Value 3";
 	
-	// TODO: Auto-setup columns when setting the mapping?
+	// Set the mapping
 	setMapping(map);
-	
-	// Add columns
-	for (let i = 0; i < map.trans.length; ++i) {
-		addColumn(map.label[map.trans[i]]);
-	}
-	
 	console.log(map);
 	
 	// Add rows

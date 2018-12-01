@@ -120,6 +120,12 @@ const addRow = function(data) {
 	$("#primary > tbody").append(row);
 };
 
+const setColumns = function() {
+	for (let i = 0; i < _mapping.trans.length; ++i) {
+		addColumn(_mapping.label[_mapping.trans[i]]);
+	}
+};
+
 const setDeleteFunction = function(func) {
 	_deleteFunction = func;
 };
@@ -134,6 +140,7 @@ const setEditFunction = function(func) {
 
 const setMapping = function(map) {
 	_mapping = map;
+	setColumns();
 };
 
 const setTabelInfo = function(table, key) {
