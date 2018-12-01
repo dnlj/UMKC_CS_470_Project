@@ -162,6 +162,20 @@ const generalDeleteFunction = function(value) {
 		});
 };
 
+const generalAddFunction = function(row) {
+	if (row.length == 0) { return; }
+	let req = pool.request();
+	
+	for (let i = 0; i < _mapping.trans.length; ++i) {
+		req.input(_mapping.trans[i], row[i]);
+	}
+	
+	req.query(`INSERT INTO ${_table} VALUES (@${_mapping.trans.join(", @")})`)
+		.then(() => {
+			refresh();
+		});
+};
+
 const main = function() {
 	// TODO: Error reporting
 	

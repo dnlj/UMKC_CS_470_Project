@@ -1,20 +1,6 @@
 setDeleteFunction(generalDeleteFunction);
 
-setAddFunction((row) => {
-	// TODO: it would be better if we could associate columns with values instead of doing this manually.
-	pool.request()
-		.input("id", row.id)
-		.input("value1", row.value1)
-		.input("value2", row.value2)
-		.input("value3", row.value3)
-		.query(`
-			INSERT INTO example_table_2 (id, value1, value2, value3)
-				VALUES (@id, @value1, @value2, @value3)
-		`)
-		.then(() => {
-			refresh();
-		});
-});
+setAddFunction(generalAddFunction);
 
 setEditFunction((old, row) => {
 	pool.request()
