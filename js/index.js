@@ -4,6 +4,7 @@ const $ = require("jquery");
 let _deleteFunction = null;
 let _addFunction = null;
 let _currentPage = null;
+let _editFunction = null;
 
 const pages = [
 	{
@@ -39,6 +40,16 @@ const pool = new sql.ConnectionPool({
 	database: "GroupProjectDB",
 });
 
+const getEditRowValues = function() {
+	let row = [];
+	
+	$(`#edit > td`).children(`input[type="text"]`).each((idx, el) => {
+		row.push(el.value);
+	});
+	
+	return row;
+};
+
 const clearPage = function() {
 	$("#edit").empty();
 	$("#labels").empty();
@@ -63,13 +74,7 @@ const loadPage = function(page) {
 		
 		add.on("click", function() {
 			if (_addFunction) {
-				let row = [];
-				
-				$(`#edit > td`).children(`input[type="text"]`).each((idx, el) => {
-					row.push(el.value);
-				});
-				
-				_addFunction(row);
+				_addFunction(getEditRowValues());
 			}
 		});
 	});
@@ -91,6 +96,15 @@ const addRow = function(data) {
 	let edit = $(`<input type="button" value="Edit">`).appendTo(td);
 	let del = $(`<input type="button" value="Delete">`).appendTo(td);
 	
+	edit.on("click", function() {
+		if (_editFunction) {
+			console.log(data);
+			console.log(getEditRowValues());
+			
+			_editFunction(data, getEditRowValues());
+		}
+	});
+	
 	del.on("click", function() {
 		if (_deleteFunction) {
 			_deleteFunction(data);
@@ -108,13 +122,16 @@ const setAddFunction = function(func) {
 	_addFunction = func;
 };
 
+const setEditFunction = function(func) {
+	_editFunction = func;
+};
+
 const refresh = function() {
 	loadPage(_currentPage);
-}
+};
 
 const main = function() {
 	// TODO: Error reporting
-	// TODO: edit row (sql)
 	
 	for (let i = 0; i < pages.length; ++i) {
 		const p = pages[i];

@@ -28,6 +28,22 @@ setAddFunction((row) => {
 		});
 });
 
+setEditFunction((old, row) => {
+	pool.request()
+		.input("id", old[0])
+		.input("value1", row[1])
+		.input("value2", row[2])
+		.input("value3", row[3])
+		.query(`
+			UPDATE example_table_2
+				SET value1 = @value1, value2 = @value2, value3 = @value3
+				WHERE id = @id;
+		`)
+		.then(() => {
+			refresh();
+		});
+});
+
 pool.query("SELECT * FROM example_table_2").then(res => {
 	return res.recordset;
 }).then(data => {
