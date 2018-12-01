@@ -1,8 +1,8 @@
 setDeleteFunction(generalDeleteFunction);
-
 setAddFunction(generalAddFunction);
+setEditFunction(generalEditFunction);
 
-setEditFunction((old, row) => {
+/*setEditFunction((old, row) => {
 	pool.request()
 		.input("id", old.id)
 		.input("value1", row.value1)
@@ -16,7 +16,7 @@ setEditFunction((old, row) => {
 		.then(() => {
 			refresh();
 		});
-});
+});*/
 
 pool.query("SELECT * FROM example_table_2").then(res => {
 	return res.recordset;
