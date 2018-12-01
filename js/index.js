@@ -5,6 +5,7 @@ let _deleteFunction = null;
 let _addFunction = null;
 let _currentPage = null;
 let _editFunction = null;
+let _mapping = null;
 
 const pages = [
 	{
@@ -56,6 +57,10 @@ const clearPage = function() {
 	$("#primary > tbody").empty();
 	
 	_deleteFunction = null;
+	_addFunction = null;
+	_currentPage = null;
+	_editFunction = null;
+	_mapping = null;
 	
 	for (let i = 0; i < pages.length; ++i) {
 		pages[i].button.removeClass("selected");
@@ -67,11 +72,11 @@ const loadPage = function(page) {
 	
 	_currentPage = page;
 	
+	page.button.addClass("selected");
+	$("#labels").append(`<th id="action_label">Action</th>`);
+	let add = $(`<td id="add_button"><input type="button" value="Add"></td>`).appendTo(`#edit`);
+	
 	$.getScript(page.file, function() {
-		page.button.addClass("selected");
-		$("#labels").append(`<th>Action</th>`);
-		let add = $(`<td><input type="button" value="Add"></td>`).appendTo(`#edit`);
-		
 		add.on("click", function() {
 			if (_addFunction) {
 				_addFunction(getEditRowValues());
@@ -81,15 +86,15 @@ const loadPage = function(page) {
 };
 
 const addColumn = function(label) {
-	$("#edit").append(`<td><input type="text"></td>`);
-	$("#labels").append(`<th>${label}</th>`);
+	$("#add_button").before(`<td><input type="text"></td>`);
+	$("#action_label").before(`<th>${label}</th>`);
 };
 
 const addRow = function(data) {
 	let row = $("<tr></tr>");
 	
-	for (let i = 0; i < data.length; ++i) {
-		row.append(`<td>${data[i]}</td>`);
+	for (let i = 0; i < _mapping.trans.length; ++i) {
+		row.append(`<td>${data[_mapping.trans[i]]}</td>`);
 	}
 	
 	let td = $(`<td></td>`).appendTo(row);
@@ -124,6 +129,10 @@ const setAddFunction = function(func) {
 
 const setEditFunction = function(func) {
 	_editFunction = func;
+};
+
+const setMapping = function(map) {
+	_mapping = map;
 };
 
 const refresh = function() {
