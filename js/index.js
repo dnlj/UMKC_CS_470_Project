@@ -6,6 +6,8 @@ let _addFunction = null;
 let _currentPage = null;
 let _editFunction = null;
 let _mapping = null;
+let _table = null;
+let _key = null;
 
 const pages = [
 	{
@@ -61,6 +63,8 @@ const clearPage = function() {
 	_currentPage = null;
 	_editFunction = null;
 	_mapping = null;
+	_table = null;
+	_key = null;
 	
 	for (let i = 0; i < pages.length; ++i) {
 		pages[i].button.removeClass("selected");
@@ -135,8 +139,27 @@ const setMapping = function(map) {
 	_mapping = map;
 };
 
+const setTabelInfo = function(table, key) {
+	_table = table;
+	_key = key;
+};
+
 const refresh = function() {
 	loadPage(_currentPage);
+};
+
+const generalDeleteFunction = function(value) {
+	if (!_table || !_key) {
+		error("Table or key not set.");
+		return;
+	}
+	
+	pool.request()
+		.input("key", value[_key])
+		.query(`DELETE FROM ${_table} WHERE ${_key} = @key`)
+		.then(() => {
+			refresh();
+		});
 };
 
 const main = function() {

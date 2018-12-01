@@ -1,11 +1,4 @@
-setDeleteFunction(row => {
-	pool.request()
-		.input("id", row.id)
-		.query(`DELETE FROM example_table_2 WHERE id=@id`)
-		.then(() => {
-			refresh();
-		});
-});
+setDeleteFunction(generalDeleteFunction);
 
 setAddFunction((row) => {
 	// TODO: it would be better if we could associate columns with values instead of doing this manually.
@@ -64,6 +57,8 @@ pool.query("SELECT * FROM example_table_2").then(res => {
 	
 	// TODO: Auto-setup columns when setting the mapping?
 	setMapping(map);
+	
+	setTabelInfo("example_table_2", "id");
 	
 	// Add columns
 	for (let i = 0; i < map.trans.length; ++i) {
