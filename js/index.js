@@ -126,6 +126,12 @@ const setColumns = function() {
 	}
 };
 
+const setRows = function(rows) {
+	for (let i = 0; i < rows.length; ++i) {
+		addRow(rows[i]);
+	}
+};
+
 const setDeleteFunction = function(func) {
 	_deleteFunction = func;
 };
