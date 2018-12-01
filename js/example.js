@@ -33,11 +33,6 @@
 	// Set the mapping
 	setMapping(map);
 	
-	// Add columns
-	for (let i = 0; i < map.trans.length; ++i) {
-		addColumn(map.label[map.trans[i]]);
-	}
-	
 	// Add rows
 	for (let i = 0; i < data.length; ++i) {
 		addRow(data[i]);
