@@ -1,3 +1,6 @@
+--------------------------------------------------------------------------------
+-- Create tables
+--------------------------------------------------------------------------------
 CREATE TABLE store (
 	Id INT PRIMARY KEY,
 	Address VARCHAR(255) NOT NULL,
@@ -12,14 +15,14 @@ CREATE TABLE warehouse (
 
 CREATE TABLE vendor (
 	Id INT PRIMARY KEY,
-	BrandName VARCHAR(255)
+	BrandName VARCHAR(32)
 );
 
 CREATE TABLE employee (
 	Id INT PRIMARY KEY,
 	SSN VARCHAR(9),
-	FirstName VARCHAR(32),
-	LastName VARCHAR(32),
+	FirstName VARCHAR(32) NOT NULL,
+	LastName VARCHAR(32) NOT NULL,
 	Salary INT NOT NULL,
 	Employer INT
 );
@@ -48,6 +51,9 @@ CREATE TABLE product (
 );
 
 
+--------------------------------------------------------------------------------
+-- Setup foreign keys
+--------------------------------------------------------------------------------
 ALTER TABLE store 
 	ADD FOREIGN KEY (Managed_By) REFERENCES employee (Id);
 
@@ -71,3 +77,20 @@ ALTER TABLE Stores
 
 ALTER TABLE Employee 
 	ADD FOREIGN KEY (Employer) REFERENCES store (Id);
+
+--------------------------------------------------------------------------------
+-- Other constraints
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+-- Test data
+--------------------------------------------------------------------------------
+INSERT INTO warehouse VALUES (0, '123 Red Road');
+INSERT INTO warehouse VALUES (1, '234 Orange Road');
+INSERT INTO warehouse VALUES (2, '345 Yellow Lane');
+INSERT INTO warehouse VALUES (3, '456 Green Road');
+INSERT INTO warehouse VALUES (4, '972 Blue Street');
+INSERT INTO warehouse VALUES (5, '865 Purple Avenue');
+
+INSERT INTO employee VALUES (0, '123456789', 'John', 'Doe', 45000, NULL);
