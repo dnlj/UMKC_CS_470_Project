@@ -24,7 +24,7 @@ const pages = [
 	},
 	{
 		label: "Employees",
-		file: "../js/example.js",
+		file: "../js/page_employee.js",
 	},
 	{
 		label: "Stores",
