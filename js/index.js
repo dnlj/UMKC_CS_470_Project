@@ -166,6 +166,7 @@ const refresh = function() {
 	loadPage(_currentPage);
 };
 
+// TODO: Generalize to work with arbitrary number of keys
 const generalDeleteFunction = function(value) {
 	if (!_table || !_key) {
 		error("Table or key not set.");
@@ -194,6 +195,7 @@ const generalAddFunction = function(row) {
 		});
 };
 
+// TODO: Generalize to work with arbitrary number of keys
 const generalEditFunction = function(old, row) {
 	if (row.length == 0) { return; }
 	let req = pool.request();
