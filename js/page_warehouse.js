@@ -11,7 +11,6 @@ pool.query(`SELECT * FROM ${_table}`).then(res => {
 	
 	// Set the mapping
 	setMapping(map);
-	console.log(map);
 	
 	// Add rows
 	setRows(data);
