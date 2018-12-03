@@ -12,15 +12,11 @@ let _key = null;
 const pages = [
 	{
 		label: "Vendors",
-		file: "../js/example.js",
-	},
-	{
-		label: "Warehouse",
-		file: "../js/example.js",
+		file: "../js/page_vendor.js",
 	},
 	{
 		label: "Products",
-		file: "../js/ex_products.js",
+		file: "../js/page_product.js",
 	},
 	{
 		label: "Employees",
@@ -28,7 +24,19 @@ const pages = [
 	},
 	{
 		label: "Stores",
-		file: "../js/example2.js",
+		file: "../js/page_store.js",
+	},
+	{
+		label: "Store Inventory",
+		file: "../js/page_sells.js",
+	},
+	{
+		label: "Warehouse",
+		file: "../js/page_warehouse.js",
+	},
+	{
+		label: "Warehouse Inventory",
+		file: "../js/page_stores.js",
 	},
 ];
 
