@@ -55,28 +55,36 @@ CREATE TABLE product (
 -- Setup foreign keys
 --------------------------------------------------------------------------------
 ALTER TABLE store 
-	ADD FOREIGN KEY (Managed_By) REFERENCES employee (Id);
+	ADD CONSTRAINT FK_Store_Managed_By
+	FOREIGN KEY (Managed_By) REFERENCES employee (Id);
 
 ALTER TABLE store 
-	ADD FOREIGN KEY (Supplier) REFERENCES warehouse (Id);
+	ADD CONSTRAINT FK_Store_Supplier
+	FOREIGN KEY (Supplier) REFERENCES warehouse (Id);
 
 ALTER TABLE sells 
-	ADD FOREIGN KEY (Store_Id) REFERENCES store (Id);
+	ADD CONSTRAINT FK_Sells_Store_Id
+	FOREIGN KEY (Store_Id) REFERENCES store (Id);
 
 ALTER TABLE sells 
-	ADD FOREIGN KEY (Product_Id) REFERENCES product (Id);
+	ADD CONSTRAINT FK_Sells_Product_Id
+	FOREIGN KEY (Product_Id) REFERENCES product (Id);
 
 ALTER TABLE product 
-	ADD FOREIGN KEY (Vendor_Id) REFERENCES vendor (Id);
+	ADD CONSTRAINT FK_Product_Vendor_Id
+	FOREIGN KEY (Vendor_Id) REFERENCES vendor (Id);
 
 ALTER TABLE Stores 
-	ADD FOREIGN KEY (Warehouse_Id) REFERENCES warehouse (Id);
+	ADD CONSTRAINT FK_Stores_Warehouse_Id
+	FOREIGN KEY (Warehouse_Id) REFERENCES warehouse (Id);
 
 ALTER TABLE Stores 
-	ADD FOREIGN KEY (Product_Id) REFERENCES product (Id);
+	ADD CONSTRAINT FK_Stores_Product_Id
+	FOREIGN KEY (Product_Id) REFERENCES product (Id);
 
 ALTER TABLE Employee 
-	ADD FOREIGN KEY (Employer) REFERENCES store (Id);
+	ADD CONSTRAINT FK_Employee_Employer
+	FOREIGN KEY (Employer) REFERENCES store (Id);
 
 --------------------------------------------------------------------------------
 -- Other constraints
@@ -93,4 +101,8 @@ INSERT INTO warehouse VALUES (3, '456 Green Road');
 INSERT INTO warehouse VALUES (4, '972 Blue Street');
 INSERT INTO warehouse VALUES (5, '865 Purple Avenue');
 
-INSERT INTO employee VALUES (0, '123456789', 'John', 'Doe', 45000, NULL);
+INSERT INTO employee VALUES (0, '111222333', 'John', 'Doe', 45000, NULL);
+INSERT INTO employee VALUES (1, '111222444', 'John', 'Doe', 45000, NULL);
+INSERT INTO employee VALUES (2, '111222555', 'John', 'Doe', 45000, NULL);
+INSERT INTO employee VALUES (3, '111222666', 'John', 'Doe', 45000, NULL);
+INSERT INTO employee VALUES (4, '111222777', 'John', 'Doe', 45000, NULL);
