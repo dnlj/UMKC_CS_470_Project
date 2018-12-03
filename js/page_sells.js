@@ -53,7 +53,9 @@ pool.query(`SELECT * FROM ${_table}`).then(res => {
 	const map = buildMappingFromColumns(data.columns);
 	
 	// Update any custom labels we want
-	map.label["Managed_By"] = "Managed By";
+	map.label["Store_Id"] = "Store Id";
+	map.label["Product_Id"] = "Product Id";
+	map.label["NumInStock"] = "# Stock";
 	
 	// Set the mapping
 	setMapping(map);
