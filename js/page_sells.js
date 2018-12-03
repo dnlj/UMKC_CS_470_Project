@@ -4,8 +4,6 @@ setDeleteFunction(function(value) {
 		return;
 	}
 	
-	console.log(value);
-	
 	pool.request()
 		.input("Store_Id", value.Store_Id)
 		.input("Product_Id", value.Product_Id)
@@ -59,7 +57,6 @@ pool.query(`SELECT * FROM ${_table}`).then(res => {
 	
 	// Set the mapping
 	setMapping(map);
-	console.log(map);
 	
 	// Add rows
 	setRows(data);
