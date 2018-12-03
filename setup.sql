@@ -136,11 +136,11 @@ INSERT INTO product VALUES (5, 'Echo', 'Smart speaker with Alexa', 69.99, 2);
 INSERT INTO product VALUES (6, 'Kindle', 'All-new design is thinner and lighter, and now available in your choice of black or white.', 79.99, 2);
 INSERT INTO product VALUES (7, 'Pixel 3', 'A phone worthy of any wish list.', 799.00, 3);
 
-INSERT INTO store VALUES (0, '789 Gumdrop Lane', 4, 3);
-INSERT INTO store VALUES (1, '654 Candycane Drive', 2, 5);
-INSERT INTO store VALUES (2, '321 Lollipop Boulvard', 3, 1);
-INSERT INTO store VALUES (3, '867 Peppermint Road', 0, 2);
-INSERT INTO store VALUES (4, '530 Taffy Street', 1, 5);
+INSERT INTO store VALUES (0, '789 Gumdrop Lane', 1, 3);
+INSERT INTO store VALUES (1, '654 Candycane Drive', 1, 5);
+INSERT INTO store VALUES (2, '321 Lollipop Boulvard', 2, 1);
+INSERT INTO store VALUES (3, '867 Peppermint Road', 2, 2);
+INSERT INTO store VALUES (4, '530 Taffy Street', 2, 5);
 
 INSERT INTO sells VALUES (0, 0, 20, 201.99);
 INSERT INTO sells VALUES (0, 2, 30, 699.00);

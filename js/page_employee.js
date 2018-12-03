@@ -10,13 +10,12 @@ pool.query(`SELECT * FROM ${_table}`).then(res => {
 	const map = buildMappingFromColumns(data.columns);
 	
 	// Update any custom labels we want
-	map.label["id"] = "Id";
-	map.label["name"] = "Name";
-	map.label["msrp"] = "MSRP";
-	map.label["description"] = "Description";
+	map.label["FirstName"] = "First Name";
+	map.label["LastName"] = "Last Name";
 	
 	// Set the mapping
 	setMapping(map);
+	console.log(map);
 	
 	// Add rows
 	setRows(data);
